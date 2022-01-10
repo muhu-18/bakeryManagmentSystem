@@ -1,0 +1,151 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="rawmaterials.css"rel="stylesheet">
+</head>
+<body>
+<div class="upper">
+<p>Sales Management</p>
+</div>
+<div class="second">
+<div>
+<b>Entries:</b><input type="text"name="entities"value="10" class="entities" id="entities">
+<input type="search" name="search" placeholder="Search item name" class="search" id="inputsch" onkeyup="srch()">
+</div>
+
+
+</div>
+
+<div class="lower">
+<table style="border:2px solid black;width:100%;"border="1" id="myTable">
+<tr>
+<th>Item name</th>
+<th>Units</th>
+<th>price/unit</th>
+<th>Total Cost</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tr>
+<td id="trtd1"><input type="text" name="tr3td1" value="" id="addtd1"></td>
+<td id="trtd2"><input type="text" name="tr3td2" value="" id="addtd2"></td>
+<td id="trtd3"><input type="text" name="tr3td3" value="Ksh." id="addtd3"></td>
+<td id="trtd4"><input type="text" name="tr3td4" value="Ksh." id="addtd4"></td>
+<td id="trtd5"><input type="text" name="tr3td5" value="Sold" id="addtd5"></td>
+<td>
+<ul>
+<li><button Id="button" onclick="Add()">Add</button></li>
+</ul>
+</td>
+</tr>
+
+</table>
+</div>
+<script>
+
+//function for deleting row
+function del(no){
+var table=document.getElementById("myTable");
+table.deleteRow(no);
+}
+
+//function for the search box
+function srch(){
+var input, filter, table ,tr ,td ,i ,textValue;
+input=document.getElementById("inputsch");
+filter=input.value.toUpperCase();
+table=document.getElementById("myTable");
+tr=table.getElementsByTagName("tr");
+for(i=0;i < tr.length;i++){
+td=tr[i].getElementsByTagName("td")[0];
+if(td){
+textValue=td.innerText || td.textContent ;
+if(textValue.toUpperCase().indexOf(filter) > -1){
+tr[i].style.display = "";
+
+}
+else{
+tr[i].style.display = "none";
+}
+
+
+}
+}
+
+
+}
+//function for displaying number of entities
+function entities(){
+var table, tr, ent, entno;
+table=document.getElementById("myTable");
+tr=table.getElementsByTagName("tr");
+ent=document.getElementById("entities");
+entno= tr.length -2;
+ent.value = entno;
+
+}
+entities();
+setInterval(entities,1000);
+//function for edit button
+function Edit(no){
+var td1tr=document.getElementById("td1tr"+no);
+var td2tr=document.getElementById("td2tr"+no);
+var td3tr=document.getElementById("td3tr"+no);
+var td4tr=document.getElementById("td4tr"+no);
+var td5tr=document.getElementById("td5tr"+no);
+
+
+
+td1tr.innerHTML="<input type='text' name='tr1td1'value='' id='newtd1tr"+no+"'>";
+td2tr.innerHTML="<input type='text' name='tr1td2'value='' id='newtd2tr"+no+"'>";
+td3tr.innerHTML="<input type='text' name='tr1td3'value='' id='newtd3tr"+no+"'>";
+td4tr.innerHTML="<input type='text' name='tr1td4'value='' id='newtd4tr"+no+"'>";
+td5tr.innerHTML="<input type='text' name='tr1td3'value='' id='newtd5tr"+no+"'>";
+
+
+
+}
+//function for save button
+function Save(no){
+var td1tr=document.getElementById("td1tr"+no);
+var td2tr=document.getElementById("td2tr"+no);
+var td3tr=document.getElementById("td3tr"+no);
+var td4tr=document.getElementById("td4tr"+no);
+var td5tr=document.getElementById("td5tr"+no);
+
+var newtd1tr=document.getElementById("newtd1tr"+no).value;
+var newtd2tr=document.getElementById("newtd2tr"+no).value;
+var newtd3tr=document.getElementById("newtd3tr"+no).value;
+var newtd4tr=document.getElementById("newtd4tr"+no).value;
+var newtd5tr=document.getElementById("newtd5tr"+no).value;
+
+td1tr.innerHTML=newtd1tr;
+td2tr.innerHTML=newtd2tr;
+td3tr.innerHTML=newtd3tr;
+td4tr.innerHTML=newtd4tr;
+td5tr.innerHTML=newtd5tr;
+
+}
+//function for adding row
+function Add(){
+var addtd1=document.getElementById("addtd1").value;
+var addtd2=document.getElementById("addtd2").value;
+var addtd3=document.getElementById("addtd3").value;
+var addtd4=document.getElementById("addtd4").value;
+var addtd5=document.getElementById("addtd5").value;
+
+
+var table=document.getElementById("myTable");
+var tr=table.getElementsByTagName("tr");
+var no= tr.length -1;
+var row=table.insertRow(no).outerHTML="<tr><td id='td1tr"+no+"'>"+ no +"." +addtd1+"</td><td id='td2tr"+no+"'>"+addtd2+"</td><td id='td3tr"+no+"'>"+addtd3+"</td><td id='td4tr"+no+"'>"+addtd4+"</td><td id='td5tr"+no+"'>"+addtd5+"</td><td><ul><li onclick='Edit("+no+")'>Edit</li><li onclick='del("+no+")'>Delete</li><li onclick='Save("+no+")'>Save</li></ul></td></tr>";
+}
+
+
+</script>
+
+</body>
+</html>
+

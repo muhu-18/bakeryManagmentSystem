@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="dashboard.css" rel="stylesheet">
+</head>
+<body>
+<div class="sidebar">
+<ul>
+<li ><a href="dashboard.html" style="color:red;">Dashboard</a></li><br>
+<li><a href="Login manager.html">Inventory Management</a></li><br>
+<li><a href="Login Salesperson.html">Sales Management</a></li><br>
+<li><a href="Login Employees.html">Rawmaterials Management</a></li><br>
+<li><a href="#">Settings</a></li><br>
+<li><a href="login Form.html">Log Out</a></li><br>
+
+</ul>
+</div>
+
+<div class="contentbar">
+
+<div class="img" id="img">
+<img src="bitimage2.jpg" width="100%"height="100%">
+</div>
+
+<div class="img" id="img">
+<img src="bitimage3.jpg" width="100%"height="100%">
+</div>
+
+<div class="img" id="img">
+<img src="bitimage4.jpg" width="100%"height="100%">
+</div>
+
+<div class="img" id="img">
+<img src="bitimage5.jpg" width="100%"height="100%">
+</div>
+
+<div class="img" id="img">
+<img src="bitimage6.jpg" width="100%"height="100%">
+</div>
+<div class="img" id="img">
+<img src="bitimage7.jpeg" width="100%"height="100%">
+</div>
+<div class="img" id="img" >
+<img src="bitimage8.jpg" width="100%"height="100%">
+</div>
+<div class="img" id="img">
+<img src="bitimage9.jpg" width="100%"height="100%">
+</div>
+<div class="img" id="img" >
+<img src="bitimage10.jpg" width="100%"height="100%">
+</div>
+<div class="img" id="img">
+<img src="bitimage11.jpg" width="100%"height="100%">
+</div>
+
+
+
+
+</div>
+<script>
+var Index =0;
+Slideshow();
+//function for changing products images
+function Slideshow(){
+var img =document.getElementsByClassName("img");
+for(var i=0;i<img.length;i++){
+img[i].style.display="none";
+}
+Index++;
+if(Index>img.length){
+Index=1;
+}
+img[Index -1].style.display="block";
+
+}
+setInterval(Slideshow,2000);
+
+</script>
+
+
+</body>
+</html>
